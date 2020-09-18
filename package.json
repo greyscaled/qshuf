@@ -2,7 +2,7 @@
   "name": "qshuf",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vapurrmaid.ca",
+  "homepage": "https://vapurrmaid.ca/qshuf",
   "scripts": {
     "build": "react-scripts build",
     "fmt": "prettier --check '**/*.{js,ts,tsx,html,json,css,scss,md}' --ignore-path=.gitignore",
