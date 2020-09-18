@@ -5,5 +5,5 @@
 Usage:
 
 ```
-https://vapurrmaid.ca?q=a,comma,separated,list
+https://vapurrmaid.ca/qshuf/?q=a,comma,separated,list
 ```
