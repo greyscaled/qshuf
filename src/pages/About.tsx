@@ -47,7 +47,7 @@ const ABOUT_TEXT: AboutText[] = [
   },
   {
     title: "Reporting Bugs",
-    content: ["Qshuf is 100% bug free 60% of the time"],
+    content: ["QShuf is 100% bug free 60% of the time"],
   },
 ];
 
