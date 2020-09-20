@@ -32,8 +32,11 @@ export const Footer: React.FC = () => {
   const { listItems } = useListContext();
 
   const link: UILink = {
-    to: location.pathname === "/about" ? "/" : "/about",
-    text: location.pathname === "/about" ? "Back" : "About",
+    to:
+      location.pathname === "/qshuf/about"
+        ? `/qshuf${location.search}`
+        : `/qshuf/about${location.search}`,
+    text: location.pathname === "/qshuf/about" ? "Back" : "About",
   };
 
   return (

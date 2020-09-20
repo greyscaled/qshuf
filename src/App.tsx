@@ -14,7 +14,7 @@ export const App: React.FC = () => {
         <Menu />
         <Content>
           <Switch>
-            <Route exact component={About} path="/about" />
+            <Route exact component={About} path="/qshuf/about" />
             <Route component={List} />
           </Switch>
         </Content>
