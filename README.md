@@ -2,8 +2,11 @@
 
 # QShuf
 
-Usage:
+Shuffle and format a list of items using the simplicity of query parameters.
+
+- `q` - a comma separated list of items
+- `fmt` - `"json"` or `"text"` (default: `"text"`)
 
 ```
-https://vapurrmaid.ca/qshuf/?q=a,comma,separated,list
+https://vapurrmaid.ca/qshuf/?q=your,comma,separated,list&fmt=json
 ```
