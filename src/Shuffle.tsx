@@ -35,7 +35,6 @@ export const Shuffle: React.FC = () => {
 
   return (
     <div>
-      <button onClick={() => setItems(shuffle([...items]))}>Reshuffle</button>
       <pre style={{ marginTop: "10px" }}>{items.join("\n")}</pre>
     </div>
   );

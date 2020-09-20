@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Menu } from "./Menu";
 import { Shuffle } from "./Shuffle";
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <h1>QShuf</h1>
       <Switch>
         <Route>
+          <Menu />
           <Shuffle />
         </Route>
       </Switch>
