@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 /** Visual formats for display */
 type ListFormat = "json" | "text";
@@ -57,7 +57,7 @@ export const useListContext = (): NonNullable<ListContext> => {
 
 /** A React Context Provider for ListContext */
 export const ListContextProvider: React.FC = ({ children }) => {
-  const history = useHistory();
+  const location = useLocation();
   const [format, setFormat] = useState<ListFormat>("text");
   const [listItems, _setListItems] = useState<string[]>([]);
 
@@ -77,7 +77,7 @@ export const ListContextProvider: React.FC = ({ children }) => {
 
   // Parses q and fmt from query params
   useEffect(() => {
-    const params = new URLSearchParams(history.location.search);
+    const params = new URLSearchParams(location.search);
     const query = params.get("q");
     const fmt = params.get("fmt");
 
@@ -88,7 +88,7 @@ export const ListContextProvider: React.FC = ({ children }) => {
     if (fmt === "json") {
       setFormat("json");
     }
-  }, [history, setListItems]);
+  }, [location, setListItems]);
 
   return (
     <initialListContext.Provider
