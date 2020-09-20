@@ -1,24 +1,25 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Menu } from "./components/Menu";
-import { List } from "./pages/List";
-import { ListContextProvider } from "./contexts/List";
-import { Footer } from "./components/Footer";
 import { Content } from "./components/Content";
-import { About } from "./pages/About";
+import { Footer } from "./components/Footer";
+import { Menu } from "./components/Menu";
+import { ListContextProvider } from "./contexts/List";
+import { PageContextProvider } from "./contexts/Page";
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <ListContextProvider>
-        <Menu />
-        <Content>
+        <PageContextProvider>
+          <Menu />
           <Switch>
-            <Route exact component={About} path="/qshuf/about" />
-            <Route component={List} />
+            <Route>
+              {/* See Content - This is a routing hack :( */}
+              <Content />
+            </Route>
           </Switch>
-        </Content>
-        <Footer />
+          <Footer />
+        </PageContextProvider>
       </ListContextProvider>
     </BrowserRouter>
   );

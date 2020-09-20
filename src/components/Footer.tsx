@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
 import { stylesheet } from "typestyle";
 import { useListContext } from "../contexts/List";
+import { usePageContext } from "../contexts/Page";
 import { COLORS } from "../styles/palette";
 
 const styles = stylesheet({
@@ -17,33 +17,25 @@ const styles = stylesheet({
     right: 0,
   },
   link: {
+    backgroundColor: "inherit",
+    border: "none",
     color: COLORS.pinkBright,
+    fontFamily: "inherit",
+    fontSize: "inherit",
+    padding: 0,
     textDecoration: "none",
   },
 });
 
-interface UILink {
-  to: string;
-  text: string;
-}
-
 export const Footer: React.FC = () => {
-  const location = useLocation();
+  const { page, setPage } = usePageContext();
   const { listItems } = useListContext();
-
-  const link: UILink = {
-    to:
-      location.pathname === "/qshuf/about"
-        ? `/qshuf${location.search}`
-        : `/qshuf/about${location.search}`,
-    text: location.pathname === "/qshuf/about" ? "Back" : "About",
-  };
 
   return (
     <div className={styles.root}>
-      <Link className={styles.link} to={link.to}>
-        {link.text}
-      </Link>
+      <button className={styles.link} onClick={() => setPage(page === "about" ? "list" : "about")}>
+        {page === "about" ? "Back" : "About"}
+      </button>
       <span style={{ marginLeft: "10px" }}>{`Count: ${listItems.length}`}</span>
     </div>
   );
