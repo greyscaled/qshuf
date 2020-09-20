@@ -2,25 +2,34 @@ import React, { useCallback, useRef } from "react";
 import { stylesheet } from "typestyle";
 import { useListContext } from "../contexts/List";
 import { useWindowEventListener } from "../hooks/event";
+import { COLORS } from "../styles/palette";
 
 const styles = stylesheet({
   root: {
-    backgroundColor: "#bbbbbb",
-    color: "black",
+    backgroundColor: COLORS.aubergineDark,
+    color: COLORS.greyWarm,
     display: "flex",
     flexDirection: "row",
     padding: "5px",
+    position: "fixed",
+    left: 0,
+    right: 0,
+    top: 0,
+  },
+  logo: {
+    color: COLORS.pinkBright,
   },
   btn: {
     backgroundColor: "inherit",
     border: "none",
-    color: "black",
+    color: COLORS.greyWarm,
     fontFamily: "inherit",
     fontSize: "inherit",
     marginLeft: "10px",
     $nest: {
       "&:active, &:focus, &:hover": {
         backgroundColor: "black",
+        borderRadius: "1px",
         color: "#bbbbbb",
       },
     },
@@ -53,7 +62,7 @@ export const Menu: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <span>QShuf</span>
+      <span className={styles.logo}>QShuf</span>
       <button className={styles.btn} onClick={shuffleItems} ref={firstBtnRef}>
         Shuffle
       </button>

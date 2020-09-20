@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Menu } from "./components/Menu";
 import { List } from "./components/List";
 import { ListContextProvider } from "./contexts/List";
+import { Footer } from "./components/Footer";
 
 export const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const App: React.FC = () => {
           <ListContextProvider>
             <Menu />
             <List />
+            <Footer />
           </ListContextProvider>
         </Route>
       </Switch>
