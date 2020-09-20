@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import { stylesheet } from "typestyle";
-import { useWindowEventListener } from "./hooks/event";
+import { useListContext } from "../contexts/List";
+import { useWindowEventListener } from "../hooks/event";
 
 const styles = stylesheet({
   root: {
@@ -27,7 +28,16 @@ const styles = stylesheet({
 });
 
 export const Menu: React.FC = () => {
+  const { format, setFormat, shuffleItems } = useListContext();
   const firstBtnRef = useRef<HTMLButtonElement>(null);
+
+  const handleReformat = useCallback(() => {
+    if (format === "json") {
+      setFormat("text");
+    } else {
+      setFormat("json");
+    }
+  }, [format, setFormat]);
 
   const handleSlash = useCallback((ev: KeyboardEvent) => {
     if (ev.key === "/" && !ev.altKey && !ev.ctrlKey && firstBtnRef.current) {
@@ -44,8 +54,11 @@ export const Menu: React.FC = () => {
   return (
     <div className={styles.root}>
       <span>QShuf</span>
-      <button className={styles.btn} ref={firstBtnRef}>
+      <button className={styles.btn} onClick={shuffleItems} ref={firstBtnRef}>
         Shuffle
+      </button>
+      <button className={styles.btn} onClick={handleReformat}>
+        {`Format: ${format === "json" ? "text" : "json"}`}
       </button>
     </div>
   );
