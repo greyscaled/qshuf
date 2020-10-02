@@ -1,3 +1,4 @@
+import { saveAs } from "file-saver";
 import React, { useCallback, useRef } from "react";
 import { stylesheet } from "typestyle";
 import { useListContext } from "../contexts/List";
@@ -40,6 +41,13 @@ export const Menu: React.FC = () => {
   const { format, formatted, setFormat, shuffleItems } = useListContext();
   const firstBtnRef = useRef<HTMLButtonElement>(null);
 
+  let downloadSupported: boolean | undefined;
+  try {
+    downloadSupported = !!new Blob();
+  } catch (e) {
+    console.info("File download is not supported", e);
+  }
+
   const handleReformat = useCallback(() => {
     if (format === "json") {
       setFormat("text");
@@ -68,6 +76,12 @@ export const Menu: React.FC = () => {
     window.alert("Copied!");
   }, [formatted]);
 
+  const handleDownload = useCallback(() => {
+    const type = format === "json" ? "application/json" : "text/plain";
+    const blob = new Blob([formatted], { type: `${type};charset=utf-8` });
+    saveAs(blob, format === "json" ? "qshuf.json" : "qshuf.txt");
+  }, [format, formatted]);
+
   useWindowEventListener("keydown", handleSlash);
 
   return (
@@ -82,6 +96,11 @@ export const Menu: React.FC = () => {
       {document.queryCommandSupported("copy") && (
         <button className={styles.btn} onClick={handleCopy}>
           {`Copy ${format === "json" ? "JSON" : "Text"}`}
+        </button>
+      )}
+      {downloadSupported && (
+        <button className={styles.btn} onClick={handleDownload}>
+          Download
         </button>
       )}
     </div>
