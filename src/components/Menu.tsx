@@ -37,7 +37,7 @@ const styles = stylesheet({
 });
 
 export const Menu: React.FC = () => {
-  const { format, setFormat, shuffleItems } = useListContext();
+  const { format, formatted, setFormat, shuffleItems } = useListContext();
   const firstBtnRef = useRef<HTMLButtonElement>(null);
 
   const handleReformat = useCallback(() => {
@@ -58,6 +58,16 @@ export const Menu: React.FC = () => {
     }
   }, []);
 
+  const handleCopy = useCallback(() => {
+    const textField = document.createElement("textarea");
+    textField.innerHTML = formatted;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand("copy");
+    textField.remove();
+    window.alert("Copied!");
+  }, [formatted]);
+
   useWindowEventListener("keydown", handleSlash);
 
   return (
@@ -67,8 +77,13 @@ export const Menu: React.FC = () => {
         Shuffle
       </button>
       <button className={styles.btn} onClick={handleReformat}>
-        {`Format: ${format === "json" ? "text" : "json"}`}
+        {`Format: ${format}`}
       </button>
+      {document.queryCommandSupported("copy") && (
+        <button className={styles.btn} onClick={handleCopy}>
+          {`Copy ${format === "json" ? "JSON" : "Text"}`}
+        </button>
+      )}
     </div>
   );
 };
