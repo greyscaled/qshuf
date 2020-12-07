@@ -5,8 +5,10 @@
   "homepage": "https://vapurrmaid.ca/qshuf",
   "scripts": {
     "build": "react-scripts build",
-    "fmt": "prettier --check '**/*.{js,ts,tsx,html,json,css,scss,md}' --ignore-path=.gitignore",
-    "lint": "eslint --ext tsx src/**",
+    "format": "prettier --check '**/*.{css,html,js,json,md,ts,tsx,yaml,yml}'",
+    "format:write": "prettier --write '**/*.{css,html,js,json,md,ts,tsx,yaml,yml}'",
+    "lint": "eslint . --cache --color --ext ts,tsx --max-warnings 0",
+    "lint:fix": "eslint . --color --ext ts,tsx --fix",
     "start": "react-scripts start"
   },
   "dependencies": {
@@ -51,7 +53,10 @@
     }
   },
   "lint-staged": {
-    "*.{html,json,tsx}": "prettier --write",
-    "*.tsx": "eslint --fix --max-warnings=0"
+    "*.{css,html,json,md,yaml,yml}": "prettier --write",
+    "*.{ts,tsx}": [
+      "eslint --fix --max-warnings=0",
+      "prettier --write"
+    ]
   }
 }
