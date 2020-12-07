@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/qshuf/static/js/main.71aef8dd.chunk.js",
+    "main.js.map": "/qshuf/static/js/main.71aef8dd.chunk.js.map",
+    "runtime-main.js": "/qshuf/static/js/runtime-main.d3763435.js",
+    "runtime-main.js.map": "/qshuf/static/js/runtime-main.d3763435.js.map",
+    "static/js/2.45b44ff4.chunk.js": "/qshuf/static/js/2.45b44ff4.chunk.js",
+    "static/js/2.45b44ff4.chunk.js.map": "/qshuf/static/js/2.45b44ff4.chunk.js.map",
+    "index.html": "/qshuf/index.html",
+    "static/js/2.45b44ff4.chunk.js.LICENSE.txt": "/qshuf/static/js/2.45b44ff4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3763435.js",
+    "static/js/2.45b44ff4.chunk.js",
+    "static/js/main.71aef8dd.chunk.js"
+  ]
+}
